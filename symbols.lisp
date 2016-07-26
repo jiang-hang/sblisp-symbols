@@ -1,0 +1,11 @@
+(defun dump-package-symbol (mpackage)
+  (with-open-file (out (format nil "~A.txt" (package-name mpackage)) :direction :output :if-exists :supersede)
+    (do-symbols (sym mpackage) 
+       (describe sym out))))
+
+(with-open-file (out "./packages.txt" :direction :output :if-exists :supersede)
+  (let ((pkgs (list-all-packages)))
+    (dolist (pkg pkgs)
+       (format out "~A~%" pkg)
+       (dump-package-symbol pkg)
+     )))
