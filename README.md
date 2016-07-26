@@ -1,4 +1,4 @@
-*how to run ?
+* how to run ?
 
 `sbcl --load ./symbols.lisp --quit`
 
